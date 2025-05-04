@@ -24,14 +24,14 @@ import java.util.stream.Collectors;
 public class WalletService {
 
     private final WalletRepository walletRepository;
-    private final UserRepository customerRepository;
+    private final UserRepository userRepository;
     private final TransactionRepository transactionRepository;
 
     public WalletService(WalletRepository walletRepository,
-                         UserRepository customerRepository,
+                         UserRepository userRepository,
                          TransactionRepository transactionRepository) {
         this.walletRepository = walletRepository;
-        this.customerRepository = customerRepository;
+        this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
     }
 
@@ -39,7 +39,7 @@ public class WalletService {
                                 boolean forShopping, boolean forWithdraw,
                                 String username) {
 
-        User customer = customerRepository.findByUsername(username)
+        User customer = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Wallet wallet = new Wallet();
@@ -58,7 +58,7 @@ public class WalletService {
         Wallet wallet = walletRepository.findById(walletId)
                 .orElseThrow(() -> new RuntimeException("Wallet not found"));
 
-        User user = customerRepository.findByUsername(principal.getName())
+        User user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!wallet.getCustomer().getId().equals(user.getId())
@@ -70,7 +70,7 @@ public class WalletService {
     }
 
     public List<WalletDto> listWallets(Principal  principal) {
-        User user = customerRepository.findByUsername(principal.getName())
+        User user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         
         System.out.println("user role "+user.getRole());
@@ -154,7 +154,7 @@ public class WalletService {
         Wallet wallet = walletRepository.findById(walletId)
                 .orElseThrow(() -> new RuntimeException("Wallet not found"));
 
-        User user = customerRepository.findByUsername(principal.getName())
+        User user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!wallet.getCustomer().getId().equals(user.getId())

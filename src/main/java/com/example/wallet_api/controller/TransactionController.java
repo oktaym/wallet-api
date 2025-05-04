@@ -8,6 +8,8 @@ import com.example.wallet_api.model.Transaction;
 import com.example.wallet_api.model.enums.TransactionStatus;
 import com.example.wallet_api.service.TransactionService;
 
+import java.security.Principal;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +24,14 @@ public class TransactionController {
     }
 
     @PostMapping("/{id}/approve")
-    public ResponseEntity<ApiResponse<TransactionDto>> approve(@PathVariable Long id) {
-    	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.APPROVED);
+    public ResponseEntity<ApiResponse<TransactionDto>> approve(@PathVariable Long id, Principal principal) {
+    	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.APPROVED,principal);
         return ResponseEntity.ok(ApiResponse.success(TransactionMapper.toDto(transaction)));
     }
 
     @PostMapping("/{id}/deny")
-    public ResponseEntity<ApiResponse<TransactionDto>> deny(@PathVariable Long id) {
-    	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.DENIED);
+    public ResponseEntity<ApiResponse<TransactionDto>> deny(@PathVariable Long id,Principal principal) {
+    	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.DENIED,principal);
         return ResponseEntity.ok(ApiResponse.success(TransactionMapper.toDto(transaction)));
     }
 }
