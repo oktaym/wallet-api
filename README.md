@@ -23,6 +23,14 @@ A Spring Boot-based digital wallet application that provides RESTful endpoints f
 4. Click `Finish`.
 5. Right-click the project → `Run As > Spring Boot App`.
 
+
+## How to Build Project
+Make sure you are in the root project directory (where pom.xml is located), then run:
+mvn clean install
+cd target
+java -jar wallet-api-0.0.1-SNAPSHOT.war
+
+
 ## Swagger
 
 http://localhost:8083/swagger-ui/index.html
