@@ -84,6 +84,10 @@ VALUES
 
 ## 📦 API Endpoints
 
+You can test the API using the included Postman collection:
+
+[wallet-api.postman_collection.json](./wallet-api.postman_collection.json)
+
 | Method | Endpoint                             | Description                    |
 |--------|--------------------------------------|--------------------------------|
 | POST   | `/api/wallets`                       | Create a new wallet            | 
