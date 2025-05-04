@@ -51,6 +51,19 @@ ali.yilmaz CUSTOMER
   "password": "123456"
 }
 
+## 💾 Database
+
+- Uses **H2 in-memory** database for development.
+http://localhost:8083/h2-console
+
+| Property         | Value                        |
+|------------------|------------------------------|
+| **JDBC URL**     | `jdbc:h2:mem:walletdb`       |
+| **Username**     | `sa`                         |
+| **Password**     | *(leave blank)*              |
+| **Driver Class** | `org.h2.Driver`              |
+
+
 data.sql
 -- 1. Kullanıcı ekle
 INSERT INTO users ( name, surname, tckn, role, username, password)
