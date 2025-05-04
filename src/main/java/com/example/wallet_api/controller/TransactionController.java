@@ -23,13 +23,13 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping("/{id}/approve")
+    @PatchMapping("/{id}/approve")
     public ResponseEntity<ApiResponse<TransactionDto>> approve(@PathVariable Long id, Principal principal) {
     	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.APPROVED,principal);
         return ResponseEntity.ok(ApiResponse.success(TransactionMapper.toDto(transaction)));
     }
 
-    @PostMapping("/{id}/deny")
+    @PatchMapping("/{id}/deny")
     public ResponseEntity<ApiResponse<TransactionDto>> deny(@PathVariable Long id,Principal principal) {
     	Transaction transaction = transactionService.updateTransactionStatus(id, TransactionStatus.DENIED,principal);
         return ResponseEntity.ok(ApiResponse.success(TransactionMapper.toDto(transaction)));
