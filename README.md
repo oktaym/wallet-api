@@ -26,9 +26,10 @@ A Spring Boot-based digital wallet application that provides RESTful endpoints f
 
 ## How to Build Project
 Make sure you are in the root project directory (where pom.xml is located), then run:
-mvn clean install
-cd target
-java -jar wallet-api-0.0.1-SNAPSHOT.war
+
+1. mvn clean install
+2. cd target
+3. java -jar wallet-api-0.0.1-SNAPSHOT.war
 
 
 ## Swagger
